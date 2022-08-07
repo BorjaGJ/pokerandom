@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Batallas</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/mystyle.css' %}">
+</head>
+<body>
+<main class="container text-center">
+    <section class="row">
+        <div class="col-lg-5">
+            <h2>Your Team</h2>
+            {% for pokemon in pokemon_party %}
+                <div class="py-2">
+                    <div id="pokemon{{ pokemon.id }}card" class="card">
+                        <div class="card-header bg-danger py-3" style="font-weight: bolder; border: black 2px solid">
+                            {{ pokemon.name | capfirst }}
+                            <div class="pokeball__button"></div>
+                        </div>
+                        <div class="card-body borde-x">
+                            <img width="200px" height="200px"
+                                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"/>
+                        </div>
+                        <div class="card-footer bg-white borde-x" style="border-bottom: black 2px solid">
+                            <div class="row mt-3">
+                                <div class="col-lg-4">
+                                    <button class="btn btn-dark"
+                                            onclick="window.open('https://www.smogon.com/dex/sm/pokemon/{{ pokemon.name }}/').focus()">
+                                        Smogon page
+                                    </button>
+                                    &nbsp;&nbsp;
+                                </div>
+                                {% for types in pokemon.types %}
+                                    <div class="col-lg-4">
+                                        <h3>{{ types.type.name |capfirst }}</h3>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-2">VS</div>
+        <div class="col-lg-5">
+            <h2>Rival Team</h2>
+            {% for pokemon in oponent_party %}
+                <div class="py-2">
+                    <div id="pokemon{{ pokemon.id }}card" class="card">
+                        <div class="card-header bg-danger py-3" style="font-weight: bolder; border: black 2px solid">
+                            {{ pokemon.name | capfirst }}
+                            <div class="pokeball__button"></div>
+                        </div>
+                        <div class="card-body borde-x">
+                            <img width="200px" height="200px"
+                                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"/>
+                        </div>
+                        <div class="card-footer bg-white borde-x" style="border-bottom: black 2px solid">
+                            <div class="row mt-3">
+                                <div class="col-lg-4">
+                                    <button class="btn btn-dark"
+                                            onclick="window.open('https://www.smogon.com/dex/sm/pokemon/{{ pokemon.name }}/').focus()">
+                                        Smogon page
+                                    </button>
+                                    &nbsp;&nbsp;
+                                </div>
+                                {% for types in pokemon.types %}
+                                    <div class="col-lg-4">
+                                        <h3>{{ types.type.name |capfirst }}</h3>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-1"></div>
+
+    </section>
+
+</main>
+</body>
+<script type="text/javascript" href="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+</html>
