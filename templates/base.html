@@ -7,6 +7,7 @@
     <meta lang="en-US">
     <title>PokeRandom</title>
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/mystyle.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <style>
         .pokeball__button {
@@ -41,7 +42,7 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
         <ul class="navbar-nav mr-auto  nav-fill w-100 row">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Quick 1 vs 1</a>
@@ -55,10 +56,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Quick 6 vs 6</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" onclick="this.href='data:text/html;charset=UTF-8,'+
-                encodeURIComponent(document.documentElement.outerHTML)" href="#" download="challenge.html">Download</a>
-            </li>
+            {% block extranavlink %}
+            {% endblock %}
         </ul>
     </div>
 </nav>

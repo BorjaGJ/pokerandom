@@ -12,7 +12,58 @@
   animation: blink .5s alternate 7;
 }
 
+.pokeball__button_big {
+  position: absolute;
+  top: calc(20% - 10px);
+  left: calc(50% - 10px);
+  width: 15px;
+  height: 15px;
+  background: #7f8c8d;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 3px black;
+  animation: blink .5s alternate 7;
+}
+
 .borde-x {
     border-left: black 2px solid;
     border-right: black 2px solid;
+}
+
+.poke_button {
+    height: 50px;
+    width: 200px;
+}
+
+@media only screen and (max-width: 1000px){
+
+    .pokeball__button_big {
+        top: calc(15% - 10px); ;
+    }
+
+}
+
+@media only screen and (max-width: 770px){
+
+    .pokeball__button_big {
+        top: calc(22% - 10px); ;
+    }
+
+}
+
+@media only screen and (max-width: 575px){
+
+    .pokeball__button_big {
+        top: calc(20% - 10px); ;
+    }
+
+}
+
+@media only screen and (max-width: 400px){
+
+    .pokeball__button_big {
+        top: calc(26% - 10px); ;
+    }
+
 }

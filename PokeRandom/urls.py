@@ -20,5 +20,7 @@ from web import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', views.Index.as_view(), name="index"),
+    url(r'^$', views.Index.as_view(), name="index"),
+    url(r'^battle/(?P<startpokemon>\d+)/(?P<endpokemon>\d+)/(?P<yourparty>\d+)/(?P<rivalparty>\d+)$',
+        views.Battle.as_view(), name="battle"),
 ]

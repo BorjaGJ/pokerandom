@@ -1,10 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main class="container">
+        <div class="">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <form method="post" class="col-lg-10">
+                    {% csrf_token %}
+                    <div class="card" style="margin: auto; width: 100%">
+                        <div class="card-header bg-danger borde-x display-4 py-4 text-center font-weight-bold"
+                             style="border-top: solid black 2px">
+                            Choose Your Settings
+                        </div>
+                        <div role="button" type="submit" class="pokeball__button_big"></div>
+                        <div class="card-body borde-x">
+                            <div class="row mt-2">
+                                <div class="col-lg-6 pb-sm-3 pb-xs-3">
+                                    <label for="firstgen">Pokemón from:</label>
+                                    <select name="firstgen" class="form-control" id="firstgen">
+                                        <option value="1" selected="selected">Generation I</option>
+                                        <option value="2">Generation II</option>
+                                        <option value="3">Generation III</option>
+                                        <option value="4">Generation VI</option>
+                                        <option value="5">Generation V</option>
+                                        <option value="6">Generation VI</option>
+                                        <option value="7">Generation VI</option>
+                                        <option value="8">Generation VIII</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 pb-sm-3 pb-xs-3">
+                                    <label for="secondgen">To Pokemón from:</label>
+                                    <select name="secondgen" class="form-control" id="secondgen">
+                                        <option value="1">Generation I</option>
+                                        <option value="2">Generation II</option>
+                                        <option value="3">Generation III</option>
+                                        <option value="4">Generation VI</option>
+                                        <option value="5">Generation V</option>
+                                        <option value="6">Generation VI</option>
+                                        <option value="7">Generation VI</option>
+                                        <option selected="selected" value="8">Generation VIII</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-lg-6 pb-sm-3 pb-xs-3">
+                                    <label for="yourparty">Your party size:</label>
+                                    <select name="yourparty" class="form-control" id="yourparty">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option selected="selected">6</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 pb-sm-3 pb-xs-3">
+                                    <label for="rivalparty">Rival party size:</label>
+                                    <select name="rivalparty" class="form-control" id="rivalparty">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option selected="selected" >6</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-5 text-center">
+                                <div class="col-sm-4 col-xs-4 pb-xs-3">
+                                    <label for="banlegend">Ban legendaries</label>
+                                    <input type="checkbox" class="form-control" id="banlegend" name="banlegend">
+                                </div>
+                                <div class="col-sm-4 col-xs-4 pb-xs-3">
+                                    <label for="banmythic">Ban Mythicals</label>
+                                    <input type="checkbox" class="form-control" id="banlegend" name="banmythic">
+                                </div>
+                                <div class="col-sm-4 col-xs-4 pb-xs-3">
+                                    <label for="additems">Add Items:</label>
+                                    <input type="checkbox" class="form-control" id="additems" name="additems">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer borde-x bg-white text-center py-3" style="border-bottom: solid black 2px">
+                            <button type="submit" class="btn poke_button" style="border: black solid 2px;font-weight: bolder">
+                                <img width="25px" height="25px" src="{% static 'img/game-icon-png-12.jpg' %}">
+                                Generate Battle
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-</body>
-</html>
+        </div>
+    </main>
+{% endblock content %}
