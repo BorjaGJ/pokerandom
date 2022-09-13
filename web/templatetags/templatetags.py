@@ -9,6 +9,16 @@ def get_proper_name(name=""):
         name = name.rsplit('-')[0]
     return name
 
+@register.simple_tag(name='get_proper_name2')
+def get_proper_name2(name=""):
+    if '-' in name:
+        name = name.replace("-", " ")
+    return name
+
+@register.simple_tag(name='get_from_list')
+def get_from_list(list, number):
+    return list[number]
+
 
 @register.simple_tag(name='get_type_color')
 def get_type_color(type=""):
