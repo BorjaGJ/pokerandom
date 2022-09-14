@@ -5,14 +5,28 @@
 <head>
     <meta charset="UTF-8">
     <meta lang="en-US">
-    <title>PokeRandom</title>
+    <title>Random Pokebattle</title>
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'style/mystyle.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
         .pokeball__button {
             position: absolute;
             top: calc(18% - 10px);
+            left: calc(50% - 10px);
+            width: 10px;
+            height: 10px;
+            background: #7f8c8d;
+            border: 10px solid #fff;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 0 3px black;
+            animation: blink .5s alternate 7;
+        }
+
+        .pokeball__button2 {
+            position: absolute;
+            top: calc(16% - 10px);
             left: calc(50% - 10px);
             width: 10px;
             height: 10px;
@@ -28,11 +42,23 @@
             border-left: black 2px solid;
             border-right: black 2px solid;
         }
+
+        @media only screen and (max-width: 575px){
+
+            .pokeball__button {
+                top: calc(16% - 10px);
+            }
+
+            .pokeball__button2 {
+                top: calc(15% - 10px);
+            }
+        }
+
     </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-    <a class="navbar-brand" href="#">PokeRandom</a>
+    <a style="font-family: 'Anton', sans-serif;" class="navbar-brand" href="#">Random PokeBattle</a>
 
     <button onclick="toggle()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
@@ -42,7 +68,7 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
         <ul class="navbar-nav mr-auto  nav-fill w-100 row">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                <a style="font-family: 'Anton', sans-serif;" class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/battle/1/898/1/1">Quick 1 vs 1</a>

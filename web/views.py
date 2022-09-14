@@ -51,12 +51,19 @@ class Battle(CreateView):
             pokemon_party = ban_legendaries(pokemon_party,
                                             int(self.kwargs['startpokemon']), int(self.kwargs['endpokemon']), cliente)
 
-        if request.session['mythic']:
             oponent_party = ban_legendaries(oponent_party,
+                                            int(self.kwargs['startpokemon']), int(self.kwargs['endpokemon']), cliente)
+
+        if request.session['mythic']:
+            pokemon_party = ban_mythics(pokemon_party,
+                                            int(self.kwargs['startpokemon']), int(self.kwargs['endpokemon']), cliente)
+
+            oponent_party = ban_mythics(oponent_party,
                                             int(self.kwargs['startpokemon']), int(self.kwargs['endpokemon']), cliente)
 
         your_items = []
         oponent_items = []
+
         if request.session['additems']:
 
             for pokemon in pokemon_party:
@@ -126,13 +133,15 @@ def ban_legendaries(pokemon_party, start, end, cliente):
         "cobalion", "terrakion", "virizion", "tornadus", "thundurus", "reshiram", "zekrom", "landorus", "kyurem",
         "xerneas", "yveltal", "zygarde", "necrozma", "solgaleo", "lunala", "tapu-Koko",
         "tapu-Fini", "tapu-Lele", "tapu-Bulu", "silvally", "zacian", "zamazenta",
-        "eternatus", "urshifu", "calyrex", "glasstrier", "spectrier", "regidrago", "regieleki"
+        "eternatus", "urshifu", "calyrex", "glastrier", "spectrier", "regidrago", "regieleki"
 
     ]
+
 
     for pokemon in pokemon_party:
 
         if pokemon.name in legendaries:
+
             pokemon = get_random_pokemon(start, end, cliente)
 
             if pokemon.name in legendaries:
@@ -157,7 +166,7 @@ def ban_mythics(pokemon_party, start, end, cliente):
 
     mythics = [
         "new", "celebi", "jirachi", "manaphy", "darkrai", "shaymin", "arceus", "victini", "deoxys", "keldeo",
-        "meloetta", "genesect", "diancie", "hoopa", "volcanion", "magearna", "marshadow", "zeraora","zarude",
+        "meloetta", "genesect", "diancie", "hoopa", "volcanion", "magearna", "marshadow", "zeraora", "zarude",
         "meltan", "melmetal"
         ]
 
@@ -166,6 +175,7 @@ def ban_mythics(pokemon_party, start, end, cliente):
     for pokemon in pokemon_party:
 
         if pokemon.name in mythics:
+
             pokemon = get_random_pokemon(start, end, cliente)
 
             if pokemon.name in mythics:

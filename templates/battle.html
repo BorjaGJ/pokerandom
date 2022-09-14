@@ -3,8 +3,10 @@
 
 {% block extranavlink %}
     <li class="nav-item">
-        <a class="nav-link" onclick="this.href='data:text/html;charset=UTF-8,'+
-                encodeURIComponent(document.documentElement.outerHTML)" href="#" download="challenge.html">Download</a>
+        <a class="nav-link text-white font-weight-bold" onclick="this.href='data:text/html;charset=UTF-8,'+
+                encodeURIComponent(document.documentElement.outerHTML)" download="challenge.html">
+            Download
+        </a>
     </li>
 {% endblock %}
 
@@ -20,24 +22,29 @@
                                  style="border: black 2px solid">
                                 {% get_proper_name pokemon.name as name %}
                                 {{ name | capfirst }}
-                                <div class="pokeball__button"></div>
+                                <div {% if your_items %}
+                                    class="pokeball__button2"
+                                {% else %}
+                                    class="pokeball__button"
+                                {% endif %}>
+                                </div>
                             </div>
                             <div class="card-body borde-x">
-                                <img width="200px" height="200px"
+                                <img width="200px" height="200px" alt="{{ name }}"
                                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"/>
                             </div>
                             <div class="card-footer bg-white borde-x container-fluid"
                                  style="border-bottom: black 2px solid">
                                 <div class="row text-center mt-3">
-                                    <div class="col-lg-4">
-                                        <button class="btn btn-dark mx-1"
+                                    <div class="col-4">
+                                        <button class="btn btn-dark"
                                                 onclick="window.open('https://www.smogon.com/dex/ss/pokemon/{{ name }}/').focus()">
                                             Smogon page
                                         </button>
                                     </div>
                                     {% for types in pokemon.types %}
                                         {% get_type_color types.type.name as color %}
-                                        <div class="col-lg-4">
+                                        <div class="col-4">
                                             <h3 style="color: {{ color }}">
                                                 {{ types.type.name |capfirst }}
                                             </h3>
@@ -46,14 +53,15 @@
                                     {% if your_items %}
                                         {% get_from_list your_items forloop.counter0 as item %}
                                         {% get_proper_name2 item.name as proper %}
-                                            <hr>
-                                            <div class="col-lg-12 mt-3">
-                                                <h2 style="">
-                                                    ITEM:
-                                                    <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
-                                                    height="50px" width="50px" alt="">
-                                                    {{ proper | capfirst }}
-                                                </h2>
+                                        <hr>
+                                        <div class="col-lg-12 mt-3">
+                                            <h2 style="">
+                                                ITEM:
+                                                <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
+                                                     height="50px" width="50px" id="imagen" alt="{{ proper }}"
+                                                     onerror="this.onerror=null;this.src='/static/img/image-not-found-icon.png';">
+                                                {{ proper | capfirst }}
+                                            </h2>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -62,7 +70,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="col-lg-2">VS</div>
+            <div class="col-lg-2"></div>
             <div class="col-lg-5">
                 <h2>Rival Team</h2>
                 {% for pokemon in oponent_party %}
@@ -72,40 +80,46 @@
                                  style="border: black 2px solid">
                                 {% get_proper_name pokemon.name as name %}
                                 {{ name | capfirst }}
-                                <div class="pokeball__button"></div>
+                                <div {% if oponent_items %}
+                                    class="pokeball__button2"
+                                {% else %}
+                                    class="pokeball__button"
+                                {% endif %}>
+                                </div>
                             </div>
                             <div class="card-body borde-x">
-                                <img width="200px" height="200px"
+                                <img width="200px" height="200px" alt="{{ name }}"
                                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"/>
                             </div>
                             <div class="card-footer bg-white borde-x container-fluid"
                                  style="border-bottom: black 2px solid">
                                 <div class="row mt-3">
-                                    <div class="col-xs-4">
-                                        <button class="btn btn-dark mx-3"
+                                    <div class="col-4">
+                                        <button class="btn btn-dark"
                                                 onclick="window.open('https://www.smogon.com/dex/ss/pokemon/{{ name }}/').focus()">
                                             Smogon page
                                         </button>
                                     </div>
                                     {% for types in pokemon.types %}
                                         {% get_type_color types.type.name as color %}
-                                        <div class="col-xs-4 mx-3">
+                                        <div class="col-4">
                                             <h3 style="color: {{ color }}">
                                                 {{ types.type.name |capfirst }}
                                             </h3>
                                         </div>
                                     {% endfor %}
-                                    {% if your_items %}
+                                    {% if oponent_items %}
                                         {% get_from_list oponent_items forloop.counter0 as item %}
                                         {% get_proper_name2 item.name as proper %}
-                                            <hr>
-                                            <div class="col-lg-12 mt-3">
-                                                <h2 style="">
-                                                    ITEM:
-                                                    <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
-                                                    height="50px" width="50px" alt="">
-                                                    {{ proper | capfirst }}
-                                                </h2>
+                                        <hr>
+                                        <div class="col-lg-12 mt-3">
+                                            <h2 style="">
+                                                ITEM:
+                                                <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
+                                                     height="50px" width="50px" id="imagen2"  alt="{{ proper }}"
+                                                     onerror="this.onerror=null;this.src='/static/img/image-not-found-icon.png';">
+                                                {{ proper | capfirst }}
+                                            </h2>
                                         </div>
                                     {% endif %}
                                 </div>
