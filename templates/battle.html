@@ -55,12 +55,15 @@
                                         {% get_proper_name2 item.name as proper %}
                                         <hr>
                                         <div class="col-lg-12 mt-3">
-                                            <h2 style="">
+                                            <h2>
+                                                <a style="text-decoration: None!important; color: black" target="_blank"
+                                                   href="https://www.smogon.com/dex/ss/items/{{ item.name }}/">
                                                 ITEM:
                                                 <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
                                                      height="50px" width="50px" id="imagen" alt="{{ proper }}"
                                                      onerror="this.onerror=null;this.src='/static/img/image-not-found-icon.png';">
                                                 {{ proper | capfirst }}
+                                                </a>
                                             </h2>
                                         </div>
                                     {% endif %}
@@ -113,12 +116,15 @@
                                         {% get_proper_name2 item.name as proper %}
                                         <hr>
                                         <div class="col-lg-12 mt-3">
-                                            <h2 style="">
+                                            <h2>
+                                                 <a style="text-decoration: None!important; color: black" target="_blank"
+                                                   href="https://www.smogon.com/dex/ss/items/{{ item.name }}/">
                                                 ITEM:
                                                 <img src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/{{ item.name }}.png?raw=true"
                                                      height="50px" width="50px" id="imagen2"  alt="{{ proper }}"
                                                      onerror="this.onerror=null;this.src='/static/img/image-not-found-icon.png';">
                                                 {{ proper | capfirst }}
+                                                 </a>
                                             </h2>
                                         </div>
                                     {% endif %}

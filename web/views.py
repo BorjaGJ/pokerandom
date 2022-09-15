@@ -192,10 +192,24 @@ def ban_mythics(pokemon_party, start, end, cliente):
 
 def get_random_item(cliente):
 
-    items = cliente.get_item_category(12)
+    categorias = [
+        # berrys
+        3, 3, 3, 3, 5, 5, 5, 6, 6, 6,
+        3, 3, 3, 3, 5, 5, 5, 6, 6, 6,
+        # held-items
+        12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
+        # choice, bad held items, specific
+        13, 13, 13, 13, 13, 13, 13, 13, 15, 17,
+        # type enhancing
+        19, 19, 19, 19, 19, 19, 19, 19, 19, 19
+    ]
 
-    number = random.randint(0, 60)
+    category = random.randint(0, categorias.__len__()-1)
 
-    item = items.items[number]
+    items = cliente.get_item_category(categorias[category]).items
+
+    number = random.randint(0, items.__len__() - 1)
+
+    item = items[number]
 
     return item
