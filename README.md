@@ -1,1 +1,1 @@
-# pokerandom
+# pk random Battle generator
