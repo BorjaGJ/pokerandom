@@ -1,6 +1,5 @@
 appdirs==1.4.4
 asgiref==3.5.2
-beckett==0.8.0
 certifi==2022.6.15
 chardet==3.0.4
 Django==3.2.15
@@ -10,7 +9,6 @@ pip==10.0.1
 pokepy==0.6.2
 pystache==0.6.0
 pytz==2022.1
-requests==2.21.0
 setuptools==39.1.0
 six==1.10.0
 sqlparse==0.4.2
